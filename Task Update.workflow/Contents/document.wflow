@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>247</string>
+	<key>AMApplicationVersion</key>
+	<string>2.1</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on date_format(old_date) -- Old_date is text, not a date.	set {year:y, month:m, day:d} to date old_date	tell (y * 10000 + m * 100 + d) as string to text 1 thru 4 &amp; "-" &amp; text 5 thru 6 &amp; "-" &amp; text 7 thru 8end date_formatset yesterday to date_format(date string of ((current date) - (1 * days)))set today to date_format(date string of (current date))set tomorrow to date_format(date string of ((current date) + (1 * days)))set answer to display dialog "Project" buttons {"Ok", "Cancel"} default button 1 default answer "IPAM Sync"set project to text returned of answerset answer to display dialog "Task ID" buttons {"Ok", "Cancel"} default button 1 default answer ""set task_id to text returned of answerset answer to display dialog "Task Name" buttons {"Ok", "Cancel"} default button 1 default answer ""set task to text returned of answerset answer to display dialog "Task is..." buttons {"Not Started", "In Progress", "Complete"} default button 3set update_type to button returned of answerif update_type is equal to "Complete" then	set answer to display dialog "Started on" buttons {"Ok"} default button 1 default answer yesterday	set z to text returned of answer		set answer to display dialog "Completed on" buttons {"Ok"} default button 1 default answer today	set zz to text returned of answer		set x to {"Task has been completed.	I started work on: ", z, "	I completed this task on:", zz} as stringelse if update_type is equal to "In Progress" then	set answer to display dialog "Started on" buttons {"Ok"} default button 1 default answer today	set z to text returned of answer		set answer to display dialog "% done" buttons {"Ok"} default button 1 default answer "50"	set zz to text returned of answer		set x to {"Task is in progress.	I started work on: ", z, "	Task is ", zz, "% complete."} as stringelse	set x to "Task still hasn't started.	I plan on starting: mm/dd/yy"end ifset answer to display dialog "Any Comment?" buttons {"Ok"} default button 1 default answer ""set y to text returned of answerset rtn to {"Project: ", project, "Task ID: ", task_id, "Task Name: ", task, "Resource: Update: 	", x, "Comment: ", y} as stringrtn</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>9D874F34-7F4B-4227-A9E8-FF1745782AF8</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>11DE0C26-D5EF-47A1-9046-BD3FC98C7BB6</string>
+				<key>UUID</key>
+				<string>8746E099-8CF6-4F2F-98A7-BB8B4B7C18D1</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>302.000000:982.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMParameterProperties</key>
+				<dict/>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>*</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/View Results.action</string>
+				<key>ActionName</key>
+				<string>View Results</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.LogOutput</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>LogOutputAction</string>
+				<key>InputUUID</key>
+				<string>F2DA5B53-BBAC-4762-B650-1DD6D0C83B79</string>
+				<key>Keywords</key>
+				<array>
+					<string>Display</string>
+					<string>Show</string>
+					<string>Log</string>
+					<string>Output</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>52A2B057-9ECE-4348-B2DA-BCFCE2B28618</string>
+				<key>UUID</key>
+				<string>5D197F2F-D156-44CC-8D65-09294672E86A</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>302.000000:489.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/View Results.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+						<string>com.apple.applescript.text-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.1.1</string>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>account</key>
+					<dict/>
+					<key>bccAddresses</key>
+					<dict/>
+					<key>ccAddresses</key>
+					<dict/>
+					<key>message</key>
+					<dict/>
+					<key>subject</key>
+					<dict/>
+					<key>toAddresses</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.mail.message-object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/New Mail Message.action</string>
+				<key>ActionName</key>
+				<string>New Mail Message</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>account</key>
+					<string>John Kamenik &lt;jkamenik@infoblox.com&gt;</string>
+					<key>bccAddresses</key>
+					<string></string>
+					<key>ccAddresses</key>
+					<string></string>
+					<key>message</key>
+					<string></string>
+					<key>subject</key>
+					<string></string>
+					<key>toAddresses</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Mail</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.CreateNewEmail</string>
+				<key>CFBundleVersion</key>
+				<string>1.1.1</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>CreateNewEmailAction</string>
+				<key>InputUUID</key>
+				<string>9C28F830-4013-4373-8674-452A00B81E96</string>
+				<key>Keywords</key>
+				<array>
+					<string>Create</string>
+					<string>Make</string>
+					<string>Message</string>
+					<string>Mail</string>
+					<string>New</string>
+					<string>Send</string>
+					<string>Address</string>
+					<string>Image</string>
+					<string>Photo</string>
+					<string>File</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>AE12ACD8-A6DE-45C0-9F7B-82A450FC27CC</string>
+				<key>UUID</key>
+				<string>E94EA480-B45E-4608-886D-D2ADBA4AA8FA</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Mail</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>account</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>message</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>subject</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>bccAddresses</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>ccAddresses</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+					<key>5</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>toAddresses</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>5</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>302.000000:308.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/New Mail Message.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>41BDE037-5CBC-44CE-BBE6-87E3BB96558B</key>
+		<dict>
+			<key>from</key>
+			<string>8746E099-8CF6-4F2F-98A7-BB8B4B7C18D1 - 8746E099-8CF6-4F2F-98A7-BB8B4B7C18D1</string>
+			<key>to</key>
+			<string>5D197F2F-D156-44CC-8D65-09294672E86A - 5D197F2F-D156-44CC-8D65-09294672E86A</string>
+		</dict>
+		<key>8C33A9DC-BD20-4DD5-B564-DA69A5E37482</key>
+		<dict>
+			<key>from</key>
+			<string>5D197F2F-D156-44CC-8D65-09294672E86A - 5D197F2F-D156-44CC-8D65-09294672E86A</string>
+			<key>to</key>
+			<string>E94EA480-B45E-4608-886D-D2ADBA4AA8FA - E94EA480-B45E-4608-886D-D2ADBA4AA8FA</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>AMLogTabViewSelectedIndex</key>
+		<integer>0</integer>
+		<key>libraryState</key>
+		<dict>
+			<key>actionsMajorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 381.000000, 515.000000, NO</string>
+					<string>0.000000, 516.000000, 381.000000, 184.000000, NO</string>
+				</array>
+			</dict>
+			<key>actionsMinorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 163.000000, 515.000000, NO</string>
+					<string>164.000000, 0.000000, 217.000000, 515.000000, NO</string>
+				</array>
+			</dict>
+			<key>variablesMajorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 350.000000, 555.000000, NO</string>
+					<string>0.000000, 556.000000, 350.000000, 148.000000, NO</string>
+				</array>
+			</dict>
+			<key>variablesMinorSplitViewState</key>
+			<dict>
+				<key>expandedPosition</key>
+				<real>0.0</real>
+				<key>subviewState</key>
+				<array>
+					<string>0.000000, 0.000000, 163.000000, 555.000000, NO</string>
+					<string>164.000000, 0.000000, 186.000000, 555.000000, NO</string>
+				</array>
+			</dict>
+		</dict>
+		<key>majorSplitViewState</key>
+		<dict>
+			<key>expandedPosition</key>
+			<real>0.0</real>
+			<key>subviewState</key>
+			<array>
+				<string>0.000000, 0.000000, 381.000000, 745.000000, NO</string>
+				<string>382.000000, 0.000000, 619.000000, 745.000000, NO</string>
+			</array>
+		</dict>
+		<key>minorSplitViewState</key>
+		<dict>
+			<key>expandedPosition</key>
+			<real>0.0</real>
+			<key>subviewState</key>
+			<array>
+				<string>0.000000, 0.000000, 619.000000, 554.000000, NO</string>
+				<string>0.000000, 564.000000, 619.000000, 162.000000, NO</string>
+			</array>
+		</dict>
+		<key>windowFrame</key>
+		<string>{{45, 56}, {1000, 822}}</string>
+		<key>workflowViewScrollPosition</key>
+		<string>{{0, 483}, {604, 554}}</string>
+	</dict>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
